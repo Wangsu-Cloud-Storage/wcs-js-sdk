@@ -51,7 +51,6 @@ export class UploadChunk {
         this.localInfo = this.getLocalFileInfo(this.file);
 
         this.chunks = getChunks(this.file, BLOCK_SIZE);
-        console.log(this.chunks);
 
         this.initChunksProgress();
 
@@ -80,7 +79,6 @@ export class UploadChunk {
                     }
                 }
 
-                console.log(err);
                 if (this.aborted) {
                     this.onError({message: abortErrorMessage})
                 } else {
@@ -182,10 +180,6 @@ export class UploadChunk {
 
     mkFileReq() {
 
-        console.log("mkfile");
-        console.log(this.ctxList);
-        console.log(this.localInfo);
-
         let requestUrL = this.createMkFileUrl(this.uploadUrl, this.file.size);
 
         let body = this.ctxList.map(value => value.ctx).join(",");
@@ -260,7 +254,6 @@ export class UploadChunk {
                 return getProgressInfoItem(this.loaded.chunks[index], chunk.size);
             })
         };
-        console.log(this.progress);
         this.uploadProgress(this.progress);
 
     }

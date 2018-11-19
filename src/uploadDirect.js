@@ -46,7 +46,6 @@ export class UploadDirect {
             onCreate:this.xhrHandler,
             timeout: this.extraConfig.timeout,
             onProgress: (data) => {
-                console.log(data);
                 let progress = getProgressInfoItem(data.loaded, data.total);
                 this.uploadProgress({total:progress});
             }

@@ -21,7 +21,6 @@ function wcsUpload(file, token, uploadUrl, extraConfig, handlers) {
     }
 
     if (file.size > BLOCK_SIZE) {
-        console.log("use upload chunk");
         return new UploadChunk(config, extraConfig, handlers);
     }
 

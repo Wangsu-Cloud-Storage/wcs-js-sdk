@@ -29,25 +29,17 @@ export function request(url, options) {
         }
 
         xhr.onreadystatechange = function () {
-            console.log("xhr.onreadystatechange");
-            console.log(xhr.readyState);
-            console.log(xhr.status);
         };
 
         xhr.onloadstart = function() {
-            console.log("xhr.onloadstart");
         };
 
         xhr.upload.onloadstart = function(){
-            console.log("xhr.upload.onloadstart");
         };
 
 
         xhr.upload.onprogress = function(evt) {
 
-            console.log("xhr.upload.onprogress");
-            console.log(xhr.readyState);
-            console.log(xhr.status);
             if (evt.lengthComputable && options.onProgress) {
                 options.onProgress({loaded: evt.loaded, total: evt.total});
             }
@@ -55,60 +47,42 @@ export function request(url, options) {
 
         //上传异常事件开始
         xhr.upload.onabort = function(){
-            console.log("xhr.upload.onabort");
         };
         // XMLHttpRequest 超时
         xhr.upload.ontimeout = function (e) {
-            console.log("xhr.upload.ontimeout");
             reject({code:0, message:timeoutErrorMessage, isRequestError: true});
         };
 
         xhr.upload.onerror = function(){
-            console.log("xhr.upload.onerror");
         };
         //上传异常事件结束
 
         xhr.upload.onload = function(){
-            console.log("xhr.upload.onload");
-
         };
 
         xhr.upload.onloadend = function(){
-            console.log("xhr.upload.onloadend");
         };
 
         xhr.onprogress = function(){
-            console.log("xhr.onprogress");
         };
 
         //异常事件开始
         xhr.onabort = function(){
-            console.log("xhr.onabort");
         };
         // XMLHttpRequest 超时
         xhr.ontimeout = function (e) {
-            console.log("xhr.ontimeout");
             reject({code:0, message:timeoutErrorMessage, isRequestError: true});
         };
 
         xhr.onerror = function(){
-            console.log("xhr.onerror");
         };
         //异常事件结束
 
         xhr.onload = function(){
-            console.log("xhr.onload");
-
-
         };
 
         xhr.onloadend = function(){
-            console.log("xhr.onloadend");
-
             let responseText = xhr.responseText;
-            console.log(xhr);
-            console.log(xhr.readyState);
-            console.log(xhr.status);
             if (xhr.readyState !== 4) {
                 return;
             }
@@ -116,7 +90,6 @@ export function request(url, options) {
             if (xhr.status !== 200) {
 
                 let  message = getErrorMessage(xhr.status);
-                console.log(message);
                 reject({code: xhr.status, message: message,  isRequestError: true});
                 return;
             }

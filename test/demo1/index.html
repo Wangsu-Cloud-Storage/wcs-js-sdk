@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>WCS-文件上传</title>
+	<link href="dist/bui/css/bs3/dpl-min.css" rel="stylesheet">
+	<link href="dist/bui/css/bs3/bui-min.css" rel="stylesheet">
+	<link href="dist/css/global.css" rel="stylesheet">
+	<link href="css/wcs-project.css" rel="stylesheet">
+	<style type="text/css">
+	body{min-width:0}
+	</style>
+</head>
+<body>
+	<div class="fileupload_page">
+		<div class="uploadtip">
+			<div><br></div>
+			<div>
+				<label>上传url[网宿云存储分配的上传地址]：</label>
+				<input type="text" id="uploadUrlId" value="http://test.up0.v1.wcsapi.com:82"/>
+			</div>
+			<div><br></div>
+			<div>
+				<label>获取tokenURL[后台服务器获取token的url]：</label>
+				<input type="text" id="getTokenUrlId" value="/getUploadToken"/>
+			</div>
+			<div><br></div>
+			<div>
+				<label>用户的AK[AK]：</label>
+				<input type="text" id="akId" value="a333e4f946f38f061edbdc000c2877d8071e3d51"/>
+			</div>
+			<div><br></div>
+			<div>
+				<label>指定保存的空间[格式bucketName]：</label>
+				<input type="text" id="bucketNameId" value="plupload-test"/>
+			</div>
+			<div><br></div>
+			<div>
+				<label>指定保存的文件夹[格式为dir1/dir2]：</label>
+				<input type="text" id="parentPathId" value="plupload" readonly="readonly"/>
+			</div>
+			<div><br></div>
+            <div>
+                <label>请求并发数(分片上传有效)：</label>
+                <input type="text" id="concurrentRequestLimit" value="1"/>
+            </div>
+            <div><br></div>
+            <div>
+                <label>请求超时时间(单位毫秒)(0为不限制)：</label>
+                <input type="text" id="timeout" value="15000"/>
+            </div>
+            <div><br></div>
+            <div>
+                <label>请求失败重试次数：</label>
+                <input type="text" id="retryCount" value="2"/>
+            </div>
+            <div><br></div>
+		</div>
+
+        <!--<div>-->
+            <!--<label for="file">Choose file to upload</label>-->
+            <!--<input type="file" id="file" name="file" multiple>-->
+        <!--</div>-->
+        <!--<ul class="file_list"></ul>-->
+
+	</div>
+
+    <span>h5sdk上传</span>
+    <div class="upload_contain">
+        <div class="upload_header"  id="h5fileContain">
+            <a href="javascript:;" class="fl button button-small button-darkblue" id="h5selectFile">上传文件</a>
+            <input type="file" id="file" multiple style="visibility: hidden">
+            <div class="fr">
+                <div class="icheck_wrap">
+                    <input type="checkbox" id="h5fileOverWrite"/>
+                    <label>文件覆盖</label>
+                </div>
+            </div>
+        </div>
+        <div class="upload_filelist">
+            <p class="h5nulltip">您还没有选择任何文件</p>
+            <table id="h5uploadFileTable">
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <span>plupload上传</span>
+    <div class="upload_contain">
+        <div class="upload_header"  id="fileContain">
+            <a href="javascript:;" class="fl button button-small button-darkblue" id="selectFile">上传文件</a>
+            <div class="fr">
+                <div class="icheck_wrap">
+                    <input type="checkbox" id="fileOverWrite"/>
+                    <label for="Prefix">文件覆盖</label>
+                </div>
+            </div>
+        </div>
+        <div class="upload_filelist">
+            <p class="nulltip">您还没有选择任何文件</p>
+            <table id="uploadFileTable">
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/plupload/plupload.full.min.js"></script>
+	<!--<script type="text/javascript" src="js/plupload/plupload.dev.js"></script>-->
+	<script type="text/javascript" src="upload.js"></script>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<!--<script type="text/javascript" src="js/jquery-1.6.2.js"></script>-->
+	<script type="text/javascript">
+		var uploader = UploadDemo.uploader({});
+	</script>
+    <script type="text/javascript" src="/dist/wcs.min.js"></script>
+    <script type="text/javascript" src="uploadH5.js"></script>
+</body>
+</html>

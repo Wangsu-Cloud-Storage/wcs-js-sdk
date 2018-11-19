@@ -1,3 +1,8 @@
+## 工程介绍
+1. [wcs-js-sdk下载链接](https://wcsd.chinanetcenter.com/sdk/wcs-js-sdk.zip)
+2. [工程源码](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/src)
+3. [demo&例子](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/test)
+
 ## 开发准备
 * 账号要求：已开通网宿云存储，并获取上传密钥，上传域名等
 * 系统要求：H5以上

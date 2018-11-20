@@ -17,7 +17,7 @@
 
 2. 通过npm安装
 ```
-npm install wcs-js
+npm install wcs-js-sdk
 ```
 
 ## 初始化说明

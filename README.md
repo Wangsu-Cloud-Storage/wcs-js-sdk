@@ -21,7 +21,7 @@ npm install wcs-js
 ```
 
 ## 初始化说明
-1. sdk通过一个`observable`对象用来控制上传行为，可触发上传、回调、停止等操作。
+1. sdk通过一个`uploadObj`对象用来控制上传行为，可触发上传、回调、停止等操作。
 2. sdk会判断文件大小同块大小`BLOCK_SIZE`来决定使用直接上传还是分片上传。文件大小>BLOCK_SIZE：使用分片上传；文件大小<=BLOCK_SIZE：使用直接上传
 ```
 使用

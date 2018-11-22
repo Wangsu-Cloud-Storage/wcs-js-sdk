@@ -13,6 +13,13 @@ $("#file").on("change", function () {
     $(this).val('');//操作结束清空input中的内容
 });
 
+function changeSize(val) {
+    if (val / 1024 < 1024) {
+        return Math.round(val / 1024) + "kb";
+    } else {
+        return Math.round(val / 1024 / 1024) + "MB";
+    }
+}
 
 function initFileAdd(file) {
     var htmlstr = "";
@@ -25,6 +32,10 @@ function initFileAdd(file) {
 										<span class="process_num"></span>\
 										<span class="message">等待上传</span>\
 									</div>\
+								</td>\
+								<td>\
+									<div class="filesize">' + changeSize(file.size) + '</div>\
+									<div class="process_time">00:00</div>\
 								</td>\
 								<td width="50" class="filectrl_td">\
 									<span class="delete_file J_upfile_delete">×</span>\
@@ -67,6 +78,16 @@ function getToken(file) {
     });
 
     return token;
+}
+
+function getDuringTime(startTime) {
+    var now = Date.parse(new Date());
+    var difDate = new Date(now - startTime);
+    var mval = difDate.getMinutes();
+    var sval = difDate.getSeconds();
+    sval = sval < 10 ? ("0" + sval) : sval;
+    mval = mval < 10 ? ("0" + mval) : mval;
+    return mval+":"+sval;
 }
 
 function initFile(file) {
@@ -118,6 +139,8 @@ function initFile(file) {
         $(li).find(".process_contain .process_bar span").css("width", progress.total.percent.toFixed(2) + "%");
         $(li).find(".process_num").html(progress.total.percent.toFixed(2)+"%");
 
+        $(li).find(".process_time").html(getDuringTime($(li).attr("data-start")));
+
     };
 
     uploadObj.onError = function (error) {
@@ -131,6 +154,7 @@ function initFile(file) {
 
     $(li).find(".upload_start").on("click", function () {
         uploadObj.token = getToken(file);
+        $(li).attr("data-start", Date.parse(new Date()));
         uploadObj.putFile();
         $(li).find(".message").html("");
     });

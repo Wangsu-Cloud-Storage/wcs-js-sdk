@@ -15,11 +15,6 @@
 通过sctipt标签引入该文件，会在全局生成名为 wcs 的对象
 ```
 
-2. 通过npm安装
-```
-npm install wcs-js-sdk
-```
-
 ## 初始化说明
 1. sdk通过一个`uploadObj`对象用来控制上传行为，可触发上传、回调、停止等操作。
 2. sdk会判断文件大小同块大小`BLOCK_SIZE`来决定使用直接上传还是分片上传。文件大小>BLOCK_SIZE：使用分片上传；文件大小<=BLOCK_SIZE：使用直接上传

@@ -1,6 +1,7 @@
 ## 工程介绍
 1. [工程源码](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/src)
 2. [demo&例子](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/test/demo1)
+3. [demo使用指南](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/demo使用指南.md)
 
 ## 开发准备
 * 账号要求：已开通网宿云存储，并获取上传密钥，上传域名等
@@ -32,7 +33,7 @@ token // 后台服务器获取的token
 uploadUrl // 网宿云存储分配的上传地址
 extraConfig={
     timeout: 0, //超时时间, 默认为0 超时错误可以重试上传
-    concurrentRequestLimit:3, //并发数,默认为3
+    concurrentRequestLimit:3, //并发数,默认为3。注：浏览器对连接的请求资源是有限的, 比如Chrome的请求资源是6, 所以会有这样的情况, 如果并发数写10, 虽然发起了10个请求, 但是只有6个真正在上传
     retryCount:0 //上传重试, 默认为0
 }
 ```

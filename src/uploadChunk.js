@@ -14,7 +14,7 @@ export class UploadChunk {
         this.extraConfig = Object.assign(
             {
                 retryCount: 0,
-                concurrentRequestLimit: 2,
+                concurrentRequestLimit: 3,
                 timeout:0,
                 checkByMD5: false,
             },

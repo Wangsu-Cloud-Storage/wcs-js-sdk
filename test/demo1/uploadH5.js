@@ -65,7 +65,7 @@ function getToken(file) {
             ak: $("#akId").val(),
             bucket: $("#bucketNameId").val(),
             expire: expire.getTime(),
-            key: file.name,
+            key: wcs.URLSafeBase64Encode(file.name),
             overwrite:$("#h5fileOverWrite").is(":checked")?1:0
         },
         error:function(res){

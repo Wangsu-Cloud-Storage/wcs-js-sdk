@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "main":"dist/wcs.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "eslint src && webpack-dev-server --open --config webpack.dev.js ",

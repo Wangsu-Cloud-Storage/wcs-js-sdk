@@ -114,8 +114,8 @@ function initFile(file) {
     initFileAdd(uploadObj.file);
     var li = $("#h5uploadFileTable tr[data-fileid='" + uploadObj.file.id + "']");
     uploadObj.uploadProgress = function (progress) {
-        console.log("uploadProgress");
-        console.log(progress);
+        // console.log("uploadProgress");
+        // console.log(progress);
 
         if (progress.chunks) {
 
@@ -135,7 +135,7 @@ function initFile(file) {
                 $($(chunkProcessSpan).get(i)).css("width", chunkPercent);
             }
         }
-        console.log(progress.total.percent);
+        // console.log(progress.total.percent);
         $(li).find(".process_contain .process_bar span").css("width", progress.total.percent.toFixed(2) + "%");
         $(li).find(".process_num").html(progress.total.percent.toFixed(2)+"%");
 

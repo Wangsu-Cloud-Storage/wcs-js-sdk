@@ -1,7 +1,7 @@
 {
   "name": "wcs-js-sdk",
   "jsName": "wcs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "private": true,
   "main":"dist/wcs.min.js",

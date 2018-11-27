@@ -6,8 +6,7 @@ module.exports = {
     library: "wcs",
     libraryTarget: "umd",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/dist/",
-    libraryExport: "default"
+    publicPath: "/dist/"
   },
   module: {
     rules: [

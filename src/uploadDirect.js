@@ -1,7 +1,7 @@
 
 
 // 直传
-import {getProgressInfoItem, request} from "./util";
+import {generateUUID, getProgressInfoItem, request} from "./util";
 import {abortErrorMessage} from "./error";
 
 export class UploadDirect {
@@ -21,6 +21,7 @@ export class UploadDirect {
         this.aborted = false;
         this.xhr = null;
         this.retryCount = 0;
+        this.file.id = generateUUID();
         this.xhrHandler = xhr => this.xhr = xhr;
         this.uploadProgress = () => {};
         this.onError = () => {};

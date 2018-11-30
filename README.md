@@ -25,10 +25,15 @@ npm install wcs-js-sdk
 2. sdk会判断文件大小同块大小`BLOCK_SIZE`来决定使用直接上传还是分片上传。文件大小>BLOCK_SIZE：使用分片上传；文件大小<=BLOCK_SIZE：使用直接上传
 ```
 引用
-import wcsUpload from 'wcs-js-sdk'
+import * as wangsu from 'wcs-js-sdk'
+
+其它引用方法
+1. import * as wangsu from 'wcs-js-sdk'           调用wangsu.wcsUpload()
+2. import { wcsUpload } from 'wcs-js-sdk'         调用wcsUpload()  
+
 
 使用
-var uploadObj = wcs.wcsUpload(file, token, uploadUrl, extraConfig);
+var uploadObj = wangsu.wcsUpload(file, token, uploadUrl, extraConfig);
 
 参数
 file // 要上传的文件

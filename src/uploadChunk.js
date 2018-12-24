@@ -6,7 +6,7 @@ import {getProgressInfoItem} from "./util";
 import {abortErrorMessage} from "./error";
 
 export let BLOCK_SIZE = 4 * 1024 * 1024;
-//分片上传
+// 分片上传
 export class UploadChunk {
 
     constructor(config, extraConfig, handlers) {
@@ -47,13 +47,13 @@ export class UploadChunk {
     putFile() {
         this.aborted = false;
 
-        //构造线程池
+        // 构造线程池
         let pool = new Pool((chunkInfo) => this.uploadChunk(chunkInfo), this.extraConfig.concurrentRequestLimit);
-        //将块加入线程池队列中
+        // 将块加入线程池队列中
         let uploadChunks = this.chunks.map((chunk, index) => {
             return pool.enqueue({chunk, index});
         });
-        //当所有的块都上传成功了合成文件
+        // 当所有的块都上传成功了合成文件
         let result = Promise.all(uploadChunks).then(() => {
             return this.mkFileReq();
         });
@@ -75,7 +75,7 @@ export class UploadChunk {
                 }
 
                 if (this.aborted) {
-                    this.onError({message: abortErrorMessage})
+                    this.onError({message: abortErrorMessage});
                 } else {
                     this.onError(err);
                     this.clear();

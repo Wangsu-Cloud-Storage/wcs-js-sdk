@@ -39,7 +39,7 @@ export class UploadDirect {
 
         let formData = new FormData();
         formData.append("file", this.file);
-        formData.append("token",this.token);
+        formData.append("token", this.token);
 
         let promise = request(this.getUploadUrl(), {
             method: "POST",
@@ -65,7 +65,7 @@ export class UploadDirect {
 
             if (this.aborted) {
                 this.onError({message: abortErrorMessage});
-            }else {
+            } else {
                 this.onError(err);
             }
 

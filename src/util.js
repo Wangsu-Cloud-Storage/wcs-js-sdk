@@ -45,7 +45,7 @@ export function request(url, options) {
             }
         };
 
-        //上传异常事件开始
+        // 上传异常事件开始
         xhr.upload.onabort = function(){
         };
         // XMLHttpRequest 超时
@@ -55,7 +55,7 @@ export function request(url, options) {
 
         xhr.upload.onerror = function(){
         };
-        //上传异常事件结束
+        // 上传异常事件结束
 
         xhr.upload.onload = function(){
         };
@@ -66,7 +66,7 @@ export function request(url, options) {
         xhr.onprogress = function(){
         };
 
-        //异常事件开始
+        // 异常事件开始
         xhr.onabort = function(){
         };
         // XMLHttpRequest 超时
@@ -76,7 +76,7 @@ export function request(url, options) {
 
         xhr.onerror = function(){
         };
-        //异常事件结束
+        // 异常事件结束
 
         xhr.onload = function(){
         };
@@ -112,7 +112,7 @@ export function parseResult(responseText) {
             return result;
         }
     } catch (e) {
-        console.log(e)
+       // 无需打印日志
     }
     return responseText;
 }
@@ -181,15 +181,15 @@ export function utf8_encode(argString) {
         return "";
     }
 
-    var string = (argString + ''); // .replace(/\r\n/g, '\n').replace(/\r/g, '\n');
-    var utftext = '',
+    let string = (argString + ''); // .replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    let utftext = '',
         start, end, stringl = 0;
 
     start = end = 0;
     stringl = string.length;
-    for (var n = 0; n < stringl; n++) {
-        var c1 = string.charCodeAt(n);
-        var enc = null;
+    for (let n = 0; n < stringl; n++) {
+        let c1 = string.charCodeAt(n);
+        let enc = null;
 
         if (c1 < 128) {
             end++;
@@ -205,7 +205,7 @@ export function utf8_encode(argString) {
             if (c1 & 0xFC00 ^ 0xD800 > 0) {
                 throw new RangeError('Unmatched trail surrogate at ' + n);
             }
-            var c2 = string.charCodeAt(++n);
+            let c2 = string.charCodeAt(++n);
             if (c2 & 0xFC00 ^ 0xDC00 > 0) {
                 throw new RangeError('Unmatched lead surrogate at ' + (n - 1));
             }

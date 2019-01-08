@@ -101,7 +101,7 @@ export class UploadChunk {
     uploadChunk(chunkInfo) {
         let {index, chunk} = chunkInfo;
 
-        let requestUrl = this.uploadUrl + "/mkblk/" + chunk.size + "/" + index + "?name=" + URLSafeBase64Encode(this.file.name) + "&chunk=" + index + "&chunks=" + this.chunks.length;
+        let requestUrl = this.uploadUrl + "/mkblk/" + chunk.size + "/" + index + "?chunk=" + index + "&chunks=" + this.chunks.length;
 
         let reuseSaved = () => {
             this.updateChunkProgress(chunk.size, index);

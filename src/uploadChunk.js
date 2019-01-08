@@ -1,7 +1,6 @@
 
 import {Pool} from "./pool.js";
 import {generateUUID, getChunks, request, sum} from "./util.js";
-import {URLSafeBase64Encode} from "./util.js";
 import {getProgressInfoItem} from "./util";
 import {abortErrorMessage} from "./error";
 

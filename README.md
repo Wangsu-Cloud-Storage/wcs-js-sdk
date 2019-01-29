@@ -84,7 +84,7 @@ uploadObj.onError = function (error) {}
 uploadObj.onComplete = function(res){}
 - res 格式
 {
-    data: jsonObj/String   //服务端返回的结果
+    data: jsonObj/String   //服务端返回的结果。注：如果是直传返回的是编码后的字符串，如果超过块大小使用了分片上传的话返回的就是json对象
 }
 ```
 

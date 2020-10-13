@@ -1,10 +1,10 @@
 {
   "name": "wcs-js-sdk",
   "jsName": "wcs",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.8",
+  "description": "1. [工程源码](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/src)\r 2. [demo&例子](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/test/demo1)\r 3. [demo使用指南](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/demo使用指南.md)",
   "private": false,
-  "main":"dist/wcs.min.js",
+  "main": "dist/wcs.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "eslint src && webpack-dev-server --open --config webpack.dev.js ",
@@ -45,5 +45,16 @@
     "json-loader": "^0.5.7",
     "style-loader": "^0.23.1",
     "webpack": "^3.6.0"
-  }
+  },
+  "directories": {
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/issues"
+  },
+  "homepage": "https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk#readme"
 }

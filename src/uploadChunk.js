@@ -1,7 +1,7 @@
 
 import {Pool} from "./pool.js";
 import {generateUUID, getChunks, request, sum} from "./util.js";
-import {getProgressInfoItem} from "./util";
+import {getProgressInfoItem,URLSafeBase64Encode} from "./util";
 import {abortErrorMessage} from "./error";
 
 export let BLOCK_SIZE = 4 * 1024 * 1024;
@@ -136,11 +136,23 @@ export class UploadChunk {
 
     getHeadersForMkFile(token) {
         let header = this.getAuthHeaders(token);
+        if ('key' in this.extraConfig) {
+            header.Key = URLSafeBase64Encode(this.extraConfig.key);
+        }
+        if ('mimeType' in this.extraConfig) {
+            header.MimeType = this.extraConfig.mimeType;
+        }
+        if ('deadline' in this.extraConfig) {
+            header.Deadline = this.extraConfig.deadline;
+        }
         return Object.assign({"content-type": "text/plain;charset=UTF-8", "uploadBatch": this.file.id}, header);
     }
 
     getHeadersForChunkUpload(token) {
         let header = this.getAuthHeaders(token);
+        if ('key' in this.extraConfig) {
+            header.Key = URLSafeBase64Encode(this.extraConfig.key);
+        }
         return Object.assign({"uploadBatch": this.file.id}, header);
     }
 

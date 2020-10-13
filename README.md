@@ -43,6 +43,9 @@ extraConfig={
     timeout: 0, //超时时间, 默认为0 超时错误可以重试上传
     concurrentRequestLimit:3, //并发数,默认为3。注：浏览器对连接的请求资源是有限的, 比如Chrome的请求资源是6, 所以会有这样的情况, 如果并发数写10, 虽然发起了10个请求, 但是只有6个真正在上传
     retryCount:0 //上传重试, 默认为0
+    key: key //选填，用于指定文件上传至云存储的名称，注：token中指定的key优先级较高
+    mimeType: mimeType //选填，自定义文件的MIME-Type
+    deadline: deadline //选填，文件保存期限。超过保存天数文件自动删除,单位：天。例如：1、2、3
 }
 ```
 

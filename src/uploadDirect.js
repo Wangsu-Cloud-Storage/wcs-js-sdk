@@ -40,7 +40,15 @@ export class UploadDirect {
         let formData = new FormData();
         formData.append("file", this.file);
         formData.append("token", this.token);
-
+        if ('key' in this.extraConfig) {
+            formData.append('key', this.extraConfig.key);
+        }
+        if ('mimeType' in this.extraConfig) {
+            formData.append('mimeType', this.extraConfig.mimeType);
+        }
+        if ('deadline' in this.extraConfig) {
+            formData.append('deadline', this.extraConfig.deadline);
+        }
         let promise = request(this.getUploadUrl(), {
             method: "POST",
             body: formData,

@@ -95,3 +95,6 @@ uploadObj.onComplete = function(res){}
 ```
 uploadObj.stop();
 ```
+
+### 获取文件etag
+wcs.getEtagHash(file, callback)

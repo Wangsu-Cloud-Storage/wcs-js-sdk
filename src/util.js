@@ -1,4 +1,3 @@
-
 import SparkMD5 from "spark-md5";
 import {getErrorMessage, timeoutErrorMessage} from "./error";
 
@@ -31,14 +30,14 @@ export function request(url, options) {
         xhr.onreadystatechange = function () {
         };
 
-        xhr.onloadstart = function() {
+        xhr.onloadstart = function () {
         };
 
-        xhr.upload.onloadstart = function(){
+        xhr.upload.onloadstart = function () {
         };
 
 
-        xhr.upload.onprogress = function(evt) {
+        xhr.upload.onprogress = function (evt) {
 
             if (evt.lengthComputable && options.onProgress) {
                 options.onProgress({loaded: evt.loaded, total: evt.total});
@@ -46,42 +45,42 @@ export function request(url, options) {
         };
 
         // 上传异常事件开始
-        xhr.upload.onabort = function(){
+        xhr.upload.onabort = function () {
         };
         // XMLHttpRequest 超时
         xhr.upload.ontimeout = function (e) {
-            reject({code:0, message:timeoutErrorMessage, isRequestError: true});
+            reject({code: 0, message: timeoutErrorMessage, isRequestError: true});
         };
 
-        xhr.upload.onerror = function(){
+        xhr.upload.onerror = function () {
         };
         // 上传异常事件结束
 
-        xhr.upload.onload = function(){
+        xhr.upload.onload = function () {
         };
 
-        xhr.upload.onloadend = function(){
+        xhr.upload.onloadend = function () {
         };
 
-        xhr.onprogress = function(){
+        xhr.onprogress = function () {
         };
 
         // 异常事件开始
-        xhr.onabort = function(){
+        xhr.onabort = function () {
         };
         // XMLHttpRequest 超时
         xhr.ontimeout = function (e) {
-            reject({code:0, message:timeoutErrorMessage, isRequestError: true});
+            reject({code: 0, message: timeoutErrorMessage, isRequestError: true});
         };
 
-        xhr.onerror = function(){
+        xhr.onerror = function () {
         };
         // 异常事件结束
 
-        xhr.onload = function(){
+        xhr.onload = function () {
         };
 
-        xhr.onloadend = function(){
+        xhr.onloadend = function () {
             let responseText = xhr.responseText;
             if (xhr.readyState !== 4) {
                 return;
@@ -89,8 +88,8 @@ export function request(url, options) {
 
             if (xhr.status !== 200) {
 
-                let  message = getErrorMessage(xhr.status);
-                reject({code: xhr.status, message: message,  isRequestError: true});
+                let message = getErrorMessage(xhr.status);
+                reject({code: xhr.status, message: message, isRequestError: true});
                 return;
             }
 
@@ -112,7 +111,7 @@ export function parseResult(responseText) {
             return result;
         }
     } catch (e) {
-       // 无需打印日志
+        // 无需打印日志
     }
     return responseText;
 }
@@ -131,7 +130,7 @@ export function getChunks(file, blockSize) {
 }
 
 
-export function sum(list){
+export function sum(list) {
     return list.reduce((sum, loaded) => {
         return sum + loaded;
     }, 0);
@@ -270,6 +269,10 @@ export function base64_encode(data) {
     }
 
     return enc;
+}
+
+export function URLSafeEncode(v) {
+    return v.replace(/\//g, '_').replace(/\+/g, '-');
 }
 
 export function URLSafeBase64Encode(v) {

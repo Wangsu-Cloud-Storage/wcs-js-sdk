@@ -3,7 +3,7 @@ $("#h5selectFile").on("click", function () {
 });
 
 $("#file").on("change", function () {
-    if($(this).val() == ''){//如果没有选择文件则不触发
+    if ($(this).val() == '') {//如果没有选择文件则不触发
         return false;
     }
     for (var i = 0; i < this.files.length; i++) {
@@ -12,6 +12,25 @@ $("#file").on("change", function () {
     }
     $(this).val('');//操作结束清空input中的内容
 });
+
+$("#getEtag").on("click", function () {
+    $("#etagFile").click();
+});
+
+$("#etagFile").on("change", function () {
+    if ($(this).val() == '') {//如果没有选择文件则不触发
+        return false;
+    }
+    for (var i = 0; i < this.files.length; i++) {
+        var file = this.files[i];
+        getFileEtag(file);
+    }
+    $(this).val('');//操作结束清空input中的内容
+});
+
+function etagCallBack(etagHash) {
+    alert("文件的Etag值为: " + etagHash);
+}
 
 function changeSize(val) {
     if (val / 1024 < 1024) {
@@ -55,7 +74,7 @@ function initFileAdd(file) {
 function getToken(file) {
     var getTokenUrlId = $("#getTokenUrlId").val();
     var expire = new Date();
-    expire.setDate(expire.getDate()+1);//设置token有效期1天
+    expire.setDate(expire.getDate() + 1);//设置token有效期1天
     var token = null;
     $.ajax({
         url: getTokenUrlId,
@@ -66,14 +85,14 @@ function getToken(file) {
             bucket: $("#bucketNameId").val(),
             expire: expire.getTime(),
             key: wcs.URLSafeBase64Encode(file.name),
-            overwrite:$("#h5fileOverWrite").is(":checked")?1:0
+            overwrite: $("#h5fileOverWrite").is(":checked") ? 1 : 0
         },
-        error:function(res){
+        error: function (res) {
             alert("token 获取失败");
-            token =  null;
+            token = null;
         },
         success: function (res) {
-            token =  res;
+            token = res;
         }
     });
 
@@ -87,7 +106,11 @@ function getDuringTime(startTime) {
     var sval = difDate.getSeconds();
     sval = sval < 10 ? ("0" + sval) : sval;
     mval = mval < 10 ? ("0" + mval) : mval;
-    return mval+":"+sval;
+    return mval + ":" + sval;
+}
+
+function getFileEtag(file) {
+    wcs.getEtagHash(file, etagCallBack);
 }
 
 function initFile(file) {
@@ -124,11 +147,11 @@ function initFile(file) {
                 $(li).find(".process_contain").after("<div>块进度</div><div class='chunk_process_contain'></div>");
                 var splitPercent = 100 / progress.chunks.length;
                 for (var i = 0; i < progress.chunks.length; i++) {
-                    $(li).find(".chunk_process_contain").append("<span class=\"process_bar\" width='"+splitPercent+"%'><span></span></span>");
+                    $(li).find(".chunk_process_contain").append("<span class=\"process_bar\" width='" + splitPercent + "%'><span></span></span>");
                 }
             }
 
-            var chunkProcessSpan =   $(li).find(".chunk_process_contain .process_bar span");
+            var chunkProcessSpan = $(li).find(".chunk_process_contain .process_bar span");
             for (var i = 0; i < progress.chunks.length; i++) {
                 var chunk = progress.chunks[i];
                 var chunkPercent = chunk.percent.toFixed(2) + "%";
@@ -137,7 +160,7 @@ function initFile(file) {
         }
         // console.log(progress.total.percent);
         $(li).find(".process_contain .process_bar span").css("width", progress.total.percent.toFixed(2) + "%");
-        $(li).find(".process_num").html(progress.total.percent.toFixed(2)+"%");
+        $(li).find(".process_num").html(progress.total.percent.toFixed(2) + "%");
 
         $(li).find(".process_time").html(getDuringTime($(li).attr("data-start")));
 
@@ -147,7 +170,7 @@ function initFile(file) {
         $(li).find(".message").html(error.message);
     };
 
-    uploadObj.onComplete = function(res){
+    uploadObj.onComplete = function (res) {
         console.log(res);
         $(li).find(".message").html("上传成功");
     };

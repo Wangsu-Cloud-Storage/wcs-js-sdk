@@ -97,4 +97,6 @@ uploadObj.stop();
 ```
 
 ### 获取文件etag
-wcs.getEtagHash(file, callback)
+```
+wangsu.getEtagHash(file, callback)
+```

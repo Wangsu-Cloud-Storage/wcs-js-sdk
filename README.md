@@ -95,7 +95,7 @@ uploadObj.onComplete = function(res){}
 ```
 uploadObj.stop();
 ```
-### urlSafeBase64编解码
+### urlSafeBase64解码
 注：文件上传成功会响应一串经过urlSafeBase64编码的字符串，可通过SDK中的解码方法解码
 ```
 EncodeUtils.urlsafeBase64Decode(incodeString)

@@ -126,7 +126,8 @@ function initFile(file) {
     var extraConfig = {
         timeout: parseInt($("#timeout").val()),
         concurrentRequestLimit: parseInt($("#concurrentRequestLimit").val()),
-        retryCount: parseInt($("#retryCount").val())
+        retryCount: parseInt($("#retryCount").val()),
+        blockSize:parseInt($("#blockSize").val())
     };
 
     var uploadObj = wcs.wcsUpload(file, token, uploadUrl, extraConfig);

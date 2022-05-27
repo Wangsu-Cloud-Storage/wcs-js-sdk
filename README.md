@@ -46,6 +46,7 @@ extraConfig={
     key: key //选填，用于指定文件上传至云存储的名称，注：token中指定的key优先级较高
     mimeType: mimeType //选填，自定义文件的MIME-Type
     deadline: deadline //选填，文件保存期限。超过保存天数文件自动删除,单位：天。例如：1、2、3
+    blockSize: blockSize //选填，文件上传块大小设置。默认4M,如需修改请填写4的倍数，单位：M 。如 8、12、16
 }
 ```
 

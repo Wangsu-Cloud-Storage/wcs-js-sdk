@@ -59,7 +59,6 @@ function multipartSha1(sha1Strings) {
 export function getEtag(file) {
     return new Promise((resolve) => {
         let count = blockCount(file);
-        let etagHash = "";
         if (count <= 1) {
             let promise = encodeFileSha1(file);
             promise.then((shaBuffer) => {

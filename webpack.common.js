@@ -20,7 +20,8 @@ module.exports = {
       {
         test: /\.js$/,
         enforce: "post",
-        loader: "es3ify-loader"
+        loader: "es3ify-loader",
+        exclude: /node_modules/
       }
     ]
   }

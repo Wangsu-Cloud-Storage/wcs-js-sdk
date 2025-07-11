@@ -1,7 +1,7 @@
-import {URLSafeBase64Encode} from "./util";
+import {URLSafeBase64Encode, URLSafeBase64Decode} from "./util";
 import {UploadChunk} from "./uploadChunk";
 import {UploadDirect} from "./uploadDirect";
-import {getEtag} from "./etagUtil"
+import {getEtag} from "./etagUtil";
 
 
 
@@ -15,11 +15,11 @@ function wcsUpload(file, token, uploadUrl, extraConfig, handlers) {
         uploadUrl: uploadUrl
     };
 
-    if(extraConfig && extraConfig.blockSize){
+    if (extraConfig && extraConfig.blockSize){
         BLOCK_SIZE = extraConfig.blockSize * 1024 * 1024;
     }
 
-    if(BLOCK_SIZE % 4 !== 0) {
+    if (BLOCK_SIZE % 4 !== 0) {
         console.log("请将块大小设置为4的倍数!");
         return null;
     }
@@ -50,5 +50,6 @@ function getEtagHash(file, callback) {
 export {
     wcsUpload,
     URLSafeBase64Encode,
-    getEtagHash
+    getEtagHash,
+    URLSafeBase64Decode
 };

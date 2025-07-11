@@ -1,7 +1,7 @@
 {
   "name": "wcs-js-sdk",
   "jsName": "wcs",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "1. [工程源码](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/src)\r 2. [demo&例子](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/test/demo1)\r 3. [demo使用指南](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/demo使用指南.md)",
   "private": false,
   "main": "dist/wcs.min.js",

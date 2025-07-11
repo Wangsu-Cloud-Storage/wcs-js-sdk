@@ -347,13 +347,13 @@ function utf8_decode(utftext) {
         if (c < 128) {
             string += String.fromCharCode(c);
             i++;
-        } else if((c > 191) && (c < 224)) {
-            c1 = utftext.charCodeAt(i+1);
+        } else if ((c > 191) && (c < 224)) {
+            c1 = utftext.charCodeAt(i + 1);
             string += String.fromCharCode(((c & 31) << 6) | (c1 & 63));
             i += 2;
         } else {
-            c1 = utftext.charCodeAt(i+1);
-            c2 = utftext.charCodeAt(i+2);
+            c1 = utftext.charCodeAt(i + 1);
+            c2 = utftext.charCodeAt(i + 2);
             string += String.fromCharCode(((c & 15) << 12) | ((c1 & 63) << 6) | (c2 & 63));
             i += 3;
         }

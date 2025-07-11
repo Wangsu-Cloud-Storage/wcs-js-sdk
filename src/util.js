@@ -297,8 +297,14 @@ function base64_decode(input) {
 
     // 将输入的 URL 安全的 Base64 字符串替换回原来的字符
     input = input.replace(/_/g, '/').replace(/-/g, '+');
+
     // 移除 Base64 字符串中的所有非 Base64 字符
-    input = input.replace(/[^A-Za-z0-9]/g, '');
+    input = input.replace(/[^A-Za-z0-9+/=]/g, '');
+
+    // 无条件填充到4的倍数（匹配Node.js行为）
+    while(input.length % 4){
+        input += '=';
+    }
 
     while (i < input.length) {
         enc1 = b64.indexOf(input.charAt(i++));
@@ -306,17 +312,24 @@ function base64_decode(input) {
         enc3 = b64.indexOf(input.charAt(i++));
         enc4 = b64.indexOf(input.charAt(i++));
 
+        // 如果第一个字符就是填充字符，跳过整个块
+        if (enc1 === 64) {
+            break;
+        }
+
         chr1 = (enc1 << 2) | (enc2 >> 4);
         chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
         chr3 = ((enc3 & 3) << 6) | enc4;
 
-        output = output + String.fromCharCode(chr1);
+        output += String.fromCharCode(chr1);
 
-        if (enc3 != 64) {
-            output = output + String.fromCharCode(chr2);
+        // 正确的填充字符处理：64 是 '=' 在 base64 字符表中的索引
+        if (enc3 !== 64) {
+            output += String.fromCharCode(chr2);
         }
-        if (enc4 != 64) {
-            output = output + String.fromCharCode(chr3);
+
+        if (enc4 !== 64) {
+            output += String.fromCharCode(chr3);
         }
     }
 

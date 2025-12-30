@@ -1,10 +1,16 @@
+# WCS JavaScript SDK
+
+## 语言 / Language
+- [简体中文](README.md)
+- [English](README.en.md)
+
 ## 工程介绍
 1. [工程源码](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/src)
 2. [demo&例子](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/test/demo1)
 3. [demo使用指南](https://github.com/Wangsu-Cloud-Storage/wcs-js-sdk/tree/master/demo使用指南.md)
 
 ## 开发准备
-* 账号要求：已开通网宿云存储，并获取上传密钥，上传域名等
+* 账号要求：已开通wcs云存储，并获取上传密钥，上传域名等
 * 系统要求：H5以上
 * Wcs-JavaScript-SDK没有包含`token`计算逻辑，为了安全，建议客户自己搭建token服务器计算token。可参考java-sdk等服务端SDK。
 
@@ -38,7 +44,7 @@ var uploadObj = wangsu.wcsUpload(file, token, uploadUrl, extraConfig);
 参数
 file // 要上传的文件
 token // 后台服务器获取的token
-uploadUrl // 网宿云存储分配的上传地址
+uploadUrl // wcs云存储分配的上传地址
 extraConfig={
     timeout: 0, //超时毫秒数, 默认为0-不超时 超时错误可以重试上传
     concurrentRequestLimit:3, //并发数,默认为3。注：浏览器对连接的请求资源是有限的, 比如Chrome的请求资源是6, 所以会有这样的情况, 如果并发数写10, 虽然发起了10个请求, 但是只有6个真正在上传

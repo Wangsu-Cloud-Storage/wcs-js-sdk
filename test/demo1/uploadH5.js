@@ -179,7 +179,7 @@ function initFile(file) {
     $(li).find(".upload_start").on("click", function () {
         uploadObj.token = getToken(file);
         $(li).attr("data-start", Date.parse(new Date()));
-        uploadObj.putFile();
+        uploadObj.putFile({'x:remark':'remark'});
         $(li).find(".message").html("");
     });
 

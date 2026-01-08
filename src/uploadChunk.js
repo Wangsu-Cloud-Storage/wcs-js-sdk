@@ -43,7 +43,7 @@ export class UploadChunk {
         return "uploadChunk";
     }
 
-    putFile() {
+    putFile(params) {
         this.aborted = false;
 
         // 构造线程池
@@ -54,7 +54,7 @@ export class UploadChunk {
         });
         // 当所有的块都上传成功了合成文件
         let result = Promise.all(uploadChunks).then(() => {
-            return this.mkFileReq();
+            return this.mkFileReq(params);
         });
 
         result.then(
@@ -161,9 +161,15 @@ export class UploadChunk {
         return {Authorization: auth};
     }
 
-    mkFileReq() {
+    mkFileReq(params) {
 
         let requestUrL = this.createMkFileUrl(this.uploadUrl, this.file.size);
+
+        if (params) {
+            Object.entries(params).forEach(([key, value]) => {
+                requestUrL += `/${key}/${URLSafeBase64Encode(value)}`;
+            });
+        }
 
         let body = this.ctxList.map(value => value.ctx).join(",");
         let headers = this.getHeadersForMkFile(this.token);

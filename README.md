@@ -12,7 +12,7 @@
 ## 开发准备
 * 账号要求：已开通wcs云存储，并获取上传密钥，上传域名等
 * 系统要求：H5以上
-* Wcs-JavaScript-SDK没有包含`token`计算逻辑，为了安全，建议客户自己搭建token服务器计算token。可参考java-sdk等服务端SDK。
+* Wcs-JavaScript-SDK没有包含`token`计算逻辑，为了安全，建议客户自己搭建token服务器计算token。可参考[java-sdk](https://github.com/Wangsu-Cloud-Storage/wcs-java-sdk)等服务端SDK。
 
 ## 安装说明
 1. 直接引用

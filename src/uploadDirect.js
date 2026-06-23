@@ -33,7 +33,7 @@ export class UploadDirect {
         return "uploadDirect";
     }
 
-    putFile() {
+    putFile(params) {
 
         this.aborted = false;
 
@@ -48,6 +48,11 @@ export class UploadDirect {
         }
         if ('deadline' in this.extraConfig) {
             formData.append('deadline', this.extraConfig.deadline);
+        }
+        if (params) {
+            Object.entries(params).forEach(([key, value]) => {
+                formData.append(key, value.toString()); 
+            });
         }
         let promise = request(this.getUploadUrl(), {
             method: "POST",
